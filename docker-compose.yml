@@ -1,0 +1,65 @@
+name: tosns
+
+services:
+  tosns-api:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: tosns-api
+    networks:
+      - tosns-net
+    ports:
+      - "${API_PORT:-8101}:8000"
+    volumes:
+      - ./backend:/app
+      - ./media:/app/media
+    env_file:
+      - .env.local
+    depends_on:
+      - tosns-db
+      - tosns-redis
+    restart: always
+
+  tosns-admin:
+    build:
+      context: ./frontend_flutter
+      dockerfile: Dockerfile
+    container_name: tosns-admin
+    networks:
+      - tosns-net
+    ports:
+      - "${ADMIN_PORT:-4101}:80"
+    volumes:
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - tosns-api
+    restart: always
+
+  tosns-db:
+    image: postgres:15-alpine
+    container_name: tosns-db
+    networks:
+      - tosns-net
+    ports:
+      - "${POSTGRES_PORT:-5401}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-tosns_dev}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    restart: always
+
+  tosns-redis:
+    image: redis:7-alpine
+    container_name: tosns-redis
+    networks:
+      - tosns-net
+    ports:
+      - "${REDIS_PORT:-6301}:6379"
+    restart: always
+
+networks:
+  tosns-net:
+    driver: bridge

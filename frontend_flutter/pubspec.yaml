@@ -1,0 +1,43 @@
+name: sns_uploader
+description: A new Flutter project for SNS Uploader.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  dio: ^5.0.0
+  provider: ^6.1.1
+  file_picker: ^6.1.1
+  intl: ^0.18.1
+  url_launcher: ^6.2.1
+  google_fonts: ^8.0.0
+  font_awesome_flutter: ^10.7.0
+  http: ^1.1.0
+  video_player: ^2.8.1
+  cupertino_icons: ^1.0.6
+  material_color_utilities: ^0.11.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  fonts:
+    - family: Paperlogy
+      fonts:
+        - asset: assets/fonts/Paperlogy-1Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Paperlogy-2ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Paperlogy-3Light.ttf
+          weight: 300
+        - asset: assets/fonts/Paperlogy-4Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Paperlogy-5Medium.ttf
+          weight: 500

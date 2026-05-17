@@ -1,0 +1,561 @@
+==========================================
+ 빌드 프로세스 시작: Thu Apr 16 20:47:01 UTC 2026
+==========================================
+[1/2] 빌드 준비 중...
+ -> 빌드 프로세스를 Docker 엔진으로 위임합니다.
+[2/2] Docker Compose 빌드 중 (tosns-api, tosns-admin)...
+ Image tosns-tosns-api Building 
+ Image tosns-tosns-admin Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.08kB done
+#1 DONE 0.0s
+
+#2 [tosns-api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 636B done
+#2 DONE 0.0s
+
+#3 [tosns-admin internal] load build definition from Dockerfile
+#3 transferring dockerfile: 634B done
+#3 DONE 0.0s
+
+#4 [tosns-admin internal] load metadata for ghcr.io/cirruslabs/flutter:stable
+#4 DONE 0.7s
+
+#5 [tosns-admin internal] load metadata for docker.io/library/nginx:alpine
+#5 ...
+
+#6 [tosns-api internal] load metadata for docker.io/library/python:3.11-slim
+#6 DONE 1.1s
+
+#7 [tosns-api internal] load .dockerignore
+#7 transferring context: 2B done
+#7 DONE 0.0s
+
+#5 [tosns-admin internal] load metadata for docker.io/library/nginx:alpine
+#5 DONE 1.1s
+
+#8 [tosns-admin internal] load .dockerignore
+#8 transferring context: 2B done
+#8 DONE 0.0s
+
+#9 [tosns-api internal] load build context
+#9 DONE 0.0s
+
+#10 [tosns-api 1/8] FROM docker.io/library/python:3.11-slim@sha256:233de06753d30d120b1a3ce359d8d3be8bda78524cd8f520c99883bfe33964cf
+#10 resolve docker.io/library/python:3.11-slim@sha256:233de06753d30d120b1a3ce359d8d3be8bda78524cd8f520c99883bfe33964cf
+#10 resolve docker.io/library/python:3.11-slim@sha256:233de06753d30d120b1a3ce359d8d3be8bda78524cd8f520c99883bfe33964cf 0.1s done
+#10 CACHED
+
+#11 [tosns-admin build 1/7] FROM ghcr.io/cirruslabs/flutter:stable@sha256:7f429b29a9568705def6308f94458633e7c21d8dcf14fe6e1762f9ced3ba83b8
+#11 resolve ghcr.io/cirruslabs/flutter:stable@sha256:7f429b29a9568705def6308f94458633e7c21d8dcf14fe6e1762f9ced3ba83b8 0.1s done
+#11 DONE 0.1s
+
+#12 [tosns-admin stage-1 1/2] FROM docker.io/library/nginx:alpine@sha256:8aa63af009a39ecd6c28d61da578a5447378c10bb097a069e3a3e0fb42bb6b19
+#12 resolve docker.io/library/nginx:alpine@sha256:8aa63af009a39ecd6c28d61da578a5447378c10bb097a069e3a3e0fb42bb6b19 0.1s done
+#12 CACHED
+
+#13 [tosns-admin build 2/7] WORKDIR /app
+#13 CACHED
+
+#9 [tosns-api internal] load build context
+#9 transferring context: 3.22kB 0.0s done
+#9 DONE 0.2s
+
+#14 [tosns-admin internal] load build context
+#14 ...
+
+#15 [tosns-api 2/8] RUN groupadd -g 2000 appuser &&     useradd -m -r -u 2000 -g appuser appuser
+#15 1.266 useradd warning: appuser's uid 2000 is greater than SYS_UID_MAX 999
+#15 DONE 1.3s
+
+#14 [tosns-admin internal] load build context
+#14 ...
+
+#16 [tosns-api 3/8] WORKDIR /app
+#16 DONE 0.4s
+
+#14 [tosns-admin internal] load build context
+#14 transferring context: 1.07MB 2.4s done
+#14 DONE 2.5s
+
+#17 [tosns-admin build 3/7] RUN flutter config --no-analytics
+#17 1.311    Woah! You appear to be trying to run flutter as root.
+#17 1.311    We strongly recommend running the flutter tool without superuser privileges.
+#17 1.311   /
+#17 1.311 📎
+#17 2.961 Analytics reporting disabled.
+#17 2.964 
+#17 2.964 You may need to restart any open editors for them to read new settings.
+#17 DONE 3.0s
+
+#18 [tosns-api 4/8] RUN apt-get update && apt-get install -y     && rm -rf /var/lib/apt/lists/*
+#18 1.183 Hit:1 http://deb.debian.org/debian trixie InRelease
+#18 1.183 Get:2 http://deb.debian.org/debian trixie-updates InRelease [47.3 kB]
+#18 1.192 Get:3 http://deb.debian.org/debian-security trixie-security InRelease [43.4 kB]
+#18 1.365 Get:4 http://deb.debian.org/debian trixie/main amd64 Packages [9671 kB]
+#18 ...
+
+#19 [tosns-admin build 4/7] COPY pubspec.yaml pubspec.lock* ./
+#19 DONE 0.3s
+
+#18 [tosns-api 4/8] RUN apt-get update && apt-get install -y     && rm -rf /var/lib/apt/lists/*
+#18 1.738 Get:5 http://deb.debian.org/debian trixie-updates/main amd64 Packages [5412 B]
+#18 1.738 Get:6 http://deb.debian.org/debian-security trixie-security/main amd64 Packages [123 kB]
+#18 3.459 Fetched 9889 kB in 2s (4199 kB/s)
+#18 3.459 Reading package lists...
+#18 5.322 Reading package lists...
+#18 7.298 Building dependency tree...
+#18 7.718 Reading state information...
+#18 8.588 0 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+#18 DONE 9.0s
+
+#20 [tosns-admin build 5/7] RUN flutter pub get
+#20 0.477    Woah! You appear to be trying to run flutter as root.
+#20 0.477    We strongly recommend running the flutter tool without superuser privileges.
+#20 0.477   /
+#20 0.477 📎
+#20 1.368 Resolving dependencies...
+#20 2.819 Downloading packages...
+#20 ...
+
+#21 [tosns-api 5/8] COPY requirements.txt .
+#21 DONE 0.1s
+
+#22 [tosns-api 6/8] RUN pip install --no-cache-dir -r requirements.txt
+#22 5.970 Collecting fastapi (from -r requirements.txt (line 1))
+#22 6.034   Downloading fastapi-0.136.0-py3-none-any.whl.metadata (28 kB)
+#22 6.088 Collecting pydantic-settings (from -r requirements.txt (line 3))
+#22 ...
+
+#20 [tosns-admin build 5/7] RUN flutter pub get
+#20 13.43   file_picker 6.2.1 (11.0.2 available)
+#20 13.43   flutter_lints 2.0.3 (6.0.0 available)
+#20 13.43   font_awesome_flutter 10.12.0 (11.0.0 available)
+#20 13.43   intl 0.18.1 (0.20.2 available)
+#20 13.43   lints 2.1.1 (6.1.0 available)
+#20 13.43   meta 1.17.0 (1.18.2 available)
+#20 13.43   path_provider_android 2.2.23 (2.3.1 available)
+#20 13.43   test_api 0.7.10 (0.7.11 available)
+#20 13.43   vector_math 2.2.0 (2.3.0 available)
+#20 13.43   vm_service 15.0.2 (15.1.0 available)
+#20 13.43   win32 5.15.0 (6.0.1 available)
+#20 13.43 Got dependencies!
+#20 13.43 11 packages have newer versions incompatible with dependency constraints.
+#20 13.43 Try `flutter pub outdated` for more information.
+#20 14.17 Package file_picker:linux references file_picker:linux as the default plugin, but it does not provide an inline implementation.
+#20 14.17 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: linux: default_package: file_picker` or add an inline implementation to file_picker via `platforms: linux:` `pluginClass` or `dartPluginClass`.
+#20 14.17 
+#20 14.17 Package file_picker:macos references file_picker:macos as the default plugin, but it does not provide an inline implementation.
+#20 14.17 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: macos: default_package: file_picker` or add an inline implementation to file_picker via `platforms: macos:` `pluginClass` or `dartPluginClass`.
+#20 14.17 
+#20 14.18 Package file_picker:windows references file_picker:windows as the default plugin, but it does not provide an inline implementation.
+#20 14.18 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: windows: default_package: file_picker` or add an inline implementation to file_picker via `platforms: windows:` `pluginClass` or `dartPluginClass`.
+#20 14.18 
+#20 14.57 Package file_picker:linux references file_picker:linux as the default plugin, but it does not provide an inline implementation.
+#20 14.57 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: linux: default_package: file_picker` or add an inline implementation to file_picker via `platforms: linux:` `pluginClass` or `dartPluginClass`.
+#20 14.57 
+#20 14.57 Package file_picker:macos references file_picker:macos as the default plugin, but it does not provide an inline implementation.
+#20 14.57 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: macos: default_package: file_picker` or add an inline implementation to file_picker via `platforms: macos:` `pluginClass` or `dartPluginClass`.
+#20 14.57 
+#20 14.57 Package file_picker:windows references file_picker:windows as the default plugin, but it does not provide an inline implementation.
+#20 14.57 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: windows: default_package: file_picker` or add an inline implementation to file_picker via `platforms: windows:` `pluginClass` or `dartPluginClass`.
+#20 14.57 
+#20 DONE 15.2s
+
+#22 [tosns-api 6/8] RUN pip install --no-cache-dir -r requirements.txt
+#22 6.093   Downloading pydantic_settings-2.13.1-py3-none-any.whl.metadata (3.4 kB)
+#22 7.004 Collecting sqlalchemy (from -r requirements.txt (line 4))
+#22 7.013   Downloading sqlalchemy-2.0.49-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#22 7.185 Collecting asyncpg (from -r requirements.txt (line 5))
+#22 7.193   Downloading asyncpg-0.31.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.4 kB)
+#22 7.265 Collecting apscheduler (from -r requirements.txt (line 6))
+#22 7.270   Downloading apscheduler-3.11.2-py3-none-any.whl.metadata (6.4 kB)
+#22 7.351 Collecting python-multipart (from -r requirements.txt (line 7))
+#22 7.355   Downloading python_multipart-0.0.26-py3-none-any.whl.metadata (2.1 kB)
+#22 7.421 Collecting httpx (from -r requirements.txt (line 8))
+#22 7.434   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#22 7.505 Collecting python-telegram-bot (from -r requirements.txt (line 11))
+#22 7.510   Downloading python_telegram_bot-22.7-py3-none-any.whl.metadata (17 kB)
+#22 7.537 Collecting google-generativeai (from -r requirements.txt (line 12))
+#22 7.543   Downloading google_generativeai-0.8.6-py3-none-any.whl.metadata (3.9 kB)
+#22 7.589 Collecting google-cloud-texttospeech (from -r requirements.txt (line 13))
+#22 7.596   Downloading google_cloud_texttospeech-2.36.0-py3-none-any.whl.metadata (9.8 kB)
+#22 7.618 Collecting aiofiles (from -r requirements.txt (line 14))
+#22 7.624   Downloading aiofiles-25.1.0-py3-none-any.whl.metadata (6.3 kB)
+#22 8.140 Collecting cryptography (from -r requirements.txt (line 15))
+#22 8.148   Downloading cryptography-46.0.7-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (5.7 kB)
+#22 8.260 Collecting uvicorn[standard] (from -r requirements.txt (line 2))
+#22 8.267   Downloading uvicorn-0.44.0-py3-none-any.whl.metadata (6.7 kB)
+#22 8.303 Collecting python-jose[cryptography] (from -r requirements.txt (line 9))
+#22 8.311   Downloading python_jose-3.5.0-py2.py3-none-any.whl.metadata (5.5 kB)
+#22 8.347 Collecting passlib[bcrypt] (from -r requirements.txt (line 10))
+#22 8.353   Downloading passlib-1.7.4-py2.py3-none-any.whl.metadata (1.7 kB)
+#22 8.497 Collecting starlette>=0.46.0 (from fastapi->-r requirements.txt (line 1))
+#22 8.503   Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
+#22 8.943 Collecting pydantic>=2.9.0 (from fastapi->-r requirements.txt (line 1))
+#22 8.950   Downloading pydantic-2.13.1-py3-none-any.whl.metadata (108 kB)
+#22 8.959      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.2/108.2 kB 52.1 MB/s eta 0:00:00
+#22 9.016 Collecting typing-extensions>=4.8.0 (from fastapi->-r requirements.txt (line 1))
+#22 9.023   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#22 9.051 Collecting typing-inspection>=0.4.2 (from fastapi->-r requirements.txt (line 1))
+#22 9.058   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#22 9.083 Collecting annotated-doc>=0.0.2 (from fastapi->-r requirements.txt (line 1))
+#22 9.090   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+#22 9.192 Collecting click>=7.0 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.200   Downloading click-8.3.2-py3-none-any.whl.metadata (2.6 kB)
+#22 9.235 Collecting h11>=0.8 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.243   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#22 9.341 Collecting httptools>=0.6.3 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.348   Downloading httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (3.5 kB)
+#22 9.408 Collecting python-dotenv>=0.13 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.415   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+#22 9.561 Collecting pyyaml>=5.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.569   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#22 9.685 Collecting uvloop>=0.15.1 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.691   Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (4.9 kB)
+#22 9.912 Collecting watchfiles>=0.20 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 9.918   Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.9 kB)
+#22 10.34 Collecting websockets>=10.4 (from uvicorn[standard]->-r requirements.txt (line 2))
+#22 10.34   Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+#22 10.89 Collecting greenlet>=1 (from sqlalchemy->-r requirements.txt (line 4))
+#22 10.90   Downloading greenlet-3.4.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+#22 11.03 Collecting tzlocal>=3.0 (from apscheduler->-r requirements.txt (line 6))
+#22 11.04   Downloading tzlocal-5.3.1-py3-none-any.whl.metadata (7.6 kB)
+#22 11.16 Collecting anyio (from httpx->-r requirements.txt (line 8))
+#22 11.17   Downloading anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+#22 11.24 Collecting certifi (from httpx->-r requirements.txt (line 8))
+#22 11.24   Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+#22 11.32 Collecting httpcore==1.* (from httpx->-r requirements.txt (line 8))
+#22 11.33   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#22 11.39 Collecting idna (from httpx->-r requirements.txt (line 8))
+#22 11.40   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+#22 11.49 Collecting ecdsa!=0.15 (from python-jose[cryptography]->-r requirements.txt (line 9))
+#22 11.50   Downloading ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+#22 11.57 Collecting rsa!=4.1.1,!=4.4,<5.0,>=4.0 (from python-jose[cryptography]->-r requirements.txt (line 9))
+#22 11.57   Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+#22 11.68 Collecting pyasn1>=0.5.0 (from python-jose[cryptography]->-r requirements.txt (line 9))
+#22 11.69   Downloading pyasn1-0.6.3-py3-none-any.whl.metadata (8.4 kB)
+#22 11.90 Collecting bcrypt>=3.1.0 (from passlib[bcrypt]->-r requirements.txt (line 10))
+#22 11.91   Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl.metadata (10 kB)
+#22 12.04 Collecting google-ai-generativelanguage==0.6.15 (from google-generativeai->-r requirements.txt (line 12))
+#22 12.05   Downloading google_ai_generativelanguage-0.6.15-py3-none-any.whl.metadata (5.7 kB)
+#22 12.22 Collecting google-api-core (from google-generativeai->-r requirements.txt (line 12))
+#22 12.22   Downloading google_api_core-2.30.3-py3-none-any.whl.metadata (3.1 kB)
+#22 12.43 Collecting google-api-python-client (from google-generativeai->-r requirements.txt (line 12))
+#22 12.45   Downloading google_api_python_client-2.194.0-py3-none-any.whl.metadata (7.0 kB)
+#22 12.82 Collecting google-auth>=2.15.0 (from google-generativeai->-r requirements.txt (line 12))
+#22 12.83   Downloading google_auth-2.49.2-py3-none-any.whl.metadata (6.2 kB)
+#22 13.19 Collecting protobuf (from google-generativeai->-r requirements.txt (line 12))
+#22 13.20   Downloading protobuf-7.34.1-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)
+#22 13.30 Collecting tqdm (from google-generativeai->-r requirements.txt (line 12))
+#22 13.31   Downloading tqdm-4.67.3-py3-none-any.whl.metadata (57 kB)
+#22 13.31      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.7/57.7 kB 142.2 MB/s eta 0:00:00
+#22 13.49 Collecting proto-plus<2.0.0dev,>=1.22.3 (from google-ai-generativelanguage==0.6.15->google-generativeai->-r requirements.txt (line 12))
+#22 13.50   Downloading proto_plus-1.27.2-py3-none-any.whl.metadata (2.2 kB)
+#22 13.58 Collecting protobuf (from google-generativeai->-r requirements.txt (line 12))
+#22 13.58   Downloading protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+#22 ...
+
+#23 [tosns-admin build 6/7] COPY . .
+#23 DONE 6.8s
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 0.524    Woah! You appear to be trying to run flutter as root.
+#24 0.524    We strongly recommend running the flutter tool without superuser privileges.
+#24 0.524   /
+#24 0.526 📎
+#24 1.175 Downloading Web SDK...                                          
+#24 ...
+
+#22 [tosns-api 6/8] RUN pip install --no-cache-dir -r requirements.txt
+#22 14.76 Collecting grpcio<2.0.0,>=1.33.2 (from google-cloud-texttospeech->-r requirements.txt (line 13))
+#22 14.76   Downloading grpcio-1.80.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.8 kB)
+#22 15.41 Collecting cffi>=2.0.0 (from cryptography->-r requirements.txt (line 15))
+#22 15.42   Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+#22 15.51 Collecting pycparser (from cffi>=2.0.0->cryptography->-r requirements.txt (line 15))
+#22 15.51   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#22 15.58 Collecting six>=1.9.0 (from ecdsa!=0.15->python-jose[cryptography]->-r requirements.txt (line 9))
+#22 15.58   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#22 15.68 Collecting googleapis-common-protos<2.0.0,>=1.63.2 (from google-api-core->google-generativeai->-r requirements.txt (line 12))
+#22 15.68   Downloading googleapis_common_protos-1.74.0-py3-none-any.whl.metadata (9.2 kB)
+#22 15.78 Collecting requests<3.0.0,>=2.20.0 (from google-api-core->google-generativeai->-r requirements.txt (line 12))
+#22 15.78   Downloading requests-2.33.1-py3-none-any.whl.metadata (4.8 kB)
+#22 15.91 Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai->-r requirements.txt (line 12))
+#22 15.92   Downloading grpcio_status-1.80.0-py3-none-any.whl.metadata (1.3 kB)
+#22 16.02 Collecting pyasn1-modules>=0.2.1 (from google-auth>=2.15.0->google-generativeai->-r requirements.txt (line 12))
+#22 16.02   Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+#22 16.19 Collecting annotated-types>=0.6.0 (from pydantic>=2.9.0->fastapi->-r requirements.txt (line 1))
+#22 16.19   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#22 18.81 Collecting pydantic-core==2.46.1 (from pydantic>=2.9.0->fastapi->-r requirements.txt (line 1))
+#22 18.82   Downloading pydantic_core-2.46.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#22 19.29 Collecting httplib2<1.0.0,>=0.19.0 (from google-api-python-client->google-generativeai->-r requirements.txt (line 12))
+#22 19.30   Downloading httplib2-0.31.2-py3-none-any.whl.metadata (2.2 kB)
+#22 19.40 Collecting google-auth-httplib2<1.0.0,>=0.2.0 (from google-api-python-client->google-generativeai->-r requirements.txt (line 12))
+#22 19.41   Downloading google_auth_httplib2-0.3.1-py3-none-any.whl.metadata (3.0 kB)
+#22 19.45 Collecting uritemplate<5,>=3.0.1 (from google-api-python-client->google-generativeai->-r requirements.txt (line 12))
+#22 19.46   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+#22 19.81 INFO: pip is looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+#22 19.83 Collecting grpcio-status<2.0.0,>=1.33.2 (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.10.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,!=2.8.*,!=2.9.*,<3.0.0dev,>=1.34.1->google-ai-generativelanguage==0.6.15->google-generativeai->-r requirements.txt (line 12))
+#22 19.83   Downloading grpcio_status-1.78.0-py3-none-any.whl.metadata (1.3 kB)
+#22 19.87   Downloading grpcio_status-1.76.0-py3-none-any.whl.metadata (1.1 kB)
+#22 19.97   Downloading grpcio_status-1.75.1-py3-none-any.whl.metadata (1.1 kB)
+#22 20.01   Downloading grpcio_status-1.75.0-py3-none-any.whl.metadata (1.1 kB)
+#22 20.06   Downloading grpcio_status-1.74.0-py3-none-any.whl.metadata (1.1 kB)
+#22 20.09   Downloading grpcio_status-1.73.1-py3-none-any.whl.metadata (1.1 kB)
+#22 20.19   Downloading grpcio_status-1.73.0-py3-none-any.whl.metadata (1.1 kB)
+#22 20.22 INFO: pip is still looking at multiple versions of grpcio-status to determine which version is compatible with other requirements. This could take a while.
+#22 20.22   Downloading grpcio_status-1.72.2-py3-none-any.whl.metadata (1.1 kB)
+#22 20.25   Downloading grpcio_status-1.72.1-py3-none-any.whl.metadata (1.1 kB)
+#22 20.29   Downloading grpcio_status-1.71.2-py3-none-any.whl.metadata (1.1 kB)
+#22 20.61 Collecting pyparsing<4,>=3.1 (from httplib2<1.0.0,>=0.19.0->google-api-python-client->google-generativeai->-r requirements.txt (line 12))
+#22 20.61   Downloading pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+#22 20.95 Collecting charset_normalizer<4,>=2 (from requests<3.0.0,>=2.20.0->google-api-core->google-generativeai->-r requirements.txt (line 12))
+#22 20.96   Downloading charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#22 20.97      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 83.6 MB/s eta 0:00:00
+#22 21.09 Collecting urllib3<3,>=1.26 (from requests<3.0.0,>=2.20.0->google-api-core->google-generativeai->-r requirements.txt (line 12))
+#22 21.09   Downloading urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+#22 21.32 Downloading fastapi-0.136.0-py3-none-any.whl (117 kB)
+#22 21.32    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 96.4 MB/s eta 0:00:00
+#22 21.33 Downloading pydantic_settings-2.13.1-py3-none-any.whl (58 kB)
+#22 21.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 119.2 MB/s eta 0:00:00
+#22 21.35 Downloading sqlalchemy-2.0.49-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.3 MB)
+#22 21.40    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 70.1 MB/s eta 0:00:00
+#22 21.41 Downloading asyncpg-0.31.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.0 MB)
+#22 21.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 72.3 MB/s eta 0:00:00
+#22 21.46 Downloading apscheduler-3.11.2-py3-none-any.whl (64 kB)
+#22 21.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.4/64.4 kB 97.6 MB/s eta 0:00:00
+#22 21.47 Downloading python_multipart-0.0.26-py3-none-any.whl (28 kB)
+#22 21.48 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#22 21.49    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 164.6 MB/s eta 0:00:00
+#22 21.50 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#22 21.50    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 177.6 MB/s eta 0:00:00
+#22 21.51 Downloading python_telegram_bot-22.7-py3-none-any.whl (745 kB)
+#22 21.52    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 745.4/745.4 kB 83.7 MB/s eta 0:00:00
+#22 21.53 Downloading google_generativeai-0.8.6-py3-none-any.whl (155 kB)
+#22 21.54    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.1/155.1 kB 94.6 MB/s eta 0:00:00
+#22 21.54 Downloading google_ai_generativelanguage-0.6.15-py3-none-any.whl (1.3 MB)
+#22 21.56    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 85.4 MB/s eta 0:00:00
+#22 21.57 Downloading google_cloud_texttospeech-2.36.0-py3-none-any.whl (200 kB)
+#22 21.58    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 200.1/200.1 kB 91.5 MB/s eta 0:00:00
+#22 21.59 Downloading aiofiles-25.1.0-py3-none-any.whl (14 kB)
+#22 21.59 Downloading cryptography-46.0.7-cp311-abi3-manylinux_2_34_x86_64.whl (4.5 MB)
+#22 21.69    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 51.3 MB/s eta 0:00:00
+#22 21.70 Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+#22 21.71 Downloading bcrypt-5.0.0-cp39-abi3-manylinux_2_34_x86_64.whl (278 kB)
+#22 21.71    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 278.2/278.2 kB 97.4 MB/s eta 0:00:00
+#22 21.72 Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+#22 21.73    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 215.6/215.6 kB 120.5 MB/s eta 0:00:00
+#22 21.74 Downloading click-8.3.2-py3-none-any.whl (108 kB)
+#22 21.74    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.4/108.4 kB 120.0 MB/s eta 0:00:00
+#22 21.75 Downloading ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+#22 21.75    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 150.8/150.8 kB 129.6 MB/s eta 0:00:00
+#22 21.76 Downloading google_api_core-2.30.3-py3-none-any.whl (173 kB)
+#22 21.77    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 173.3/173.3 kB 92.2 MB/s eta 0:00:00
+#22 21.78 Downloading google_auth-2.49.2-py3-none-any.whl (240 kB)
+#22 21.78    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 240.6/240.6 kB 93.1 MB/s eta 0:00:00
+#22 21.79 Downloading greenlet-3.4.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (613 kB)
+#22 21.80    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 613.5/613.5 kB 116.8 MB/s eta 0:00:00
+#22 21.81 Downloading grpcio-1.80.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.8 MB)
+#22 22.27    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.8/6.8 MB 14.9 MB/s eta 0:00:00
+#22 22.28 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#22 22.29 Downloading httptools-0.7.1-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (456 kB)
+#22 22.30    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 456.6/456.6 kB 130.5 MB/s eta 0:00:00
+#22 22.30 Downloading proto_plus-1.27.2-py3-none-any.whl (50 kB)
+#22 22.31    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.5/50.5 kB 74.5 MB/s eta 0:00:00
+#22 22.32 Downloading protobuf-5.29.6-cp38-abi3-manylinux2014_x86_64.whl (320 kB)
+#22 22.33    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 320.5/320.5 kB 117.2 MB/s eta 0:00:00
+#22 22.33 Downloading pyasn1-0.6.3-py3-none-any.whl (83 kB)
+#22 22.34    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 84.0/84.0 kB 102.1 MB/s eta 0:00:00
+#22 22.35 Downloading pydantic-2.13.1-py3-none-any.whl (471 kB)
+#22 22.36    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 471.9/471.9 kB 126.2 MB/s eta 0:00:00
+#22 22.36 Downloading pydantic_core-2.46.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#22 22.39    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 118.0 MB/s eta 0:00:00
+#22 22.41 Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+#22 22.41 Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+#22 22.43    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 85.8 MB/s eta 0:00:00
+#22 22.43 Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+#22 22.44 Downloading starlette-1.0.0-py3-none-any.whl (72 kB)
+#22 22.44    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.7/72.7 kB 62.3 MB/s eta 0:00:00
+#22 22.45 Downloading anyio-4.13.0-py3-none-any.whl (114 kB)
+#22 22.46    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.4/114.4 kB 88.0 MB/s eta 0:00:00
+#22 22.47 Downloading idna-3.11-py3-none-any.whl (71 kB)
+#22 22.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.0/71.0 kB 76.4 MB/s eta 0:00:00
+#22 22.48 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#22 22.49    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 71.5 MB/s eta 0:00:00
+#22 22.49 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#22 22.50 Downloading tzlocal-5.3.1-py3-none-any.whl (18 kB)
+#22 22.51 Downloading uvloop-0.22.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.8 MB)
+#22 22.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 73.4 MB/s eta 0:00:00
+#22 22.58 Downloading watchfiles-1.1.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (456 kB)
+#22 22.59    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 456.1/456.1 kB 85.8 MB/s eta 0:00:00
+#22 22.60 Downloading websockets-16.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+#22 22.60    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 184.6/184.6 kB 86.4 MB/s eta 0:00:00
+#22 22.61 Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+#22 22.62    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 153.7/153.7 kB 70.5 MB/s eta 0:00:00
+#22 22.63 Downloading google_api_python_client-2.194.0-py3-none-any.whl (15.0 MB)
+#22 22.84    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.0/15.0 MB 71.9 MB/s eta 0:00:00
+#22 22.85 Downloading passlib-1.7.4-py2.py3-none-any.whl (525 kB)
+#22 22.86    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 525.6/525.6 kB 122.3 MB/s eta 0:00:00
+#22 22.87 Downloading python_jose-3.5.0-py2.py3-none-any.whl (34 kB)
+#22 22.87 Downloading tqdm-4.67.3-py3-none-any.whl (78 kB)
+#22 22.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.4/78.4 kB 111.8 MB/s eta 0:00:00
+#22 22.88 Downloading uvicorn-0.44.0-py3-none-any.whl (69 kB)
+#22 22.89    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.4/69.4 kB 120.7 MB/s eta 0:00:00
+#22 22.89 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#22 22.90 Downloading google_auth_httplib2-0.3.1-py3-none-any.whl (9.5 kB)
+#22 22.91 Downloading googleapis_common_protos-1.74.0-py3-none-any.whl (300 kB)
+#22 22.92    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 300.7/300.7 kB 83.5 MB/s eta 0:00:00
+#22 22.92 Downloading grpcio_status-1.71.2-py3-none-any.whl (14 kB)
+#22 22.93 Downloading httplib2-0.31.2-py3-none-any.whl (91 kB)
+#22 22.94    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.1/91.1 kB 75.4 MB/s eta 0:00:00
+#22 22.94 Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+#22 22.96    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 181.3/181.3 kB 37.5 MB/s eta 0:00:00
+#22 22.96 Downloading requests-2.33.1-py3-none-any.whl (64 kB)
+#22 22.97    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.9/64.9 kB 83.5 MB/s eta 0:00:00
+#22 22.98 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#22 22.99 Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+#22 22.99 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#22 23.00    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 kB 43.8 MB/s eta 0:00:00
+#22 23.01 Downloading charset_normalizer-3.4.7-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (214 kB)
+#22 23.02    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.1/214.1 kB 131.5 MB/s eta 0:00:00
+#22 23.02 Downloading pyparsing-3.3.2-py3-none-any.whl (122 kB)
+#22 23.03    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 122.8/122.8 kB 114.8 MB/s eta 0:00:00
+#22 23.04 Downloading urllib3-2.6.3-py3-none-any.whl (131 kB)
+#22 23.04    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.6/131.6 kB 112.6 MB/s eta 0:00:00
+#22 24.24 Installing collected packages: passlib, websockets, uvloop, urllib3, uritemplate, tzlocal, typing-extensions, tqdm, six, pyyaml, python-multipart, python-dotenv, pyparsing, pycparser, pyasn1, protobuf, idna, httptools, h11, greenlet, click, charset_normalizer, certifi, bcrypt, asyncpg, annotated-types, annotated-doc, aiofiles, uvicorn, typing-inspection, sqlalchemy, rsa, requests, pydantic-core, pyasn1-modules, proto-plus, httplib2, httpcore, grpcio, googleapis-common-protos, ecdsa, cffi, apscheduler, anyio, watchfiles, starlette, python-jose, pydantic, httpx, grpcio-status, cryptography, python-telegram-bot, pydantic-settings, google-auth, fastapi, google-auth-httplib2, google-api-core, google-api-python-client, google-cloud-texttospeech, google-ai-generativelanguage, google-generativeai
+#22 ...
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 1.175 Downloading Web SDK...                                              4.9s
+#24 7.798 Resolving dependencies...
+#24 8.209 Downloading packages...
+#24 8.343   file_picker 6.2.1 (11.0.2 available)
+#24 8.343   flutter_lints 2.0.3 (6.0.0 available)
+#24 8.344   font_awesome_flutter 10.12.0 (11.0.0 available)
+#24 8.345   intl 0.18.1 (0.20.2 available)
+#24 8.346   lints 2.1.1 (6.1.0 available)
+#24 8.347   meta 1.17.0 (1.18.2 available)
+#24 8.348   path_provider_android 2.2.23 (2.3.1 available)
+#24 8.348   test_api 0.7.10 (0.7.11 available)
+#24 8.348   vector_math 2.2.0 (2.3.0 available)
+#24 8.349   vm_service 15.0.2 (15.1.0 available)
+#24 8.350   win32 5.15.0 (6.0.1 available)
+#24 8.351 Got dependencies!
+#24 8.354 11 packages have newer versions incompatible with dependency constraints.
+#24 8.354 Try `flutter pub outdated` for more information.
+#24 8.946 Package file_picker:linux references file_picker:linux as the default plugin, but it does not provide an inline implementation.
+#24 8.946 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: linux: default_package: file_picker` or add an inline implementation to file_picker via `platforms: linux:` `pluginClass` or `dartPluginClass`.
+#24 8.946 
+#24 8.948 Package file_picker:macos references file_picker:macos as the default plugin, but it does not provide an inline implementation.
+#24 8.948 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: macos: default_package: file_picker` or add an inline implementation to file_picker via `platforms: macos:` `pluginClass` or `dartPluginClass`.
+#24 8.948 
+#24 8.951 Package file_picker:windows references file_picker:windows as the default plugin, but it does not provide an inline implementation.
+#24 8.951 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: windows: default_package: file_picker` or add an inline implementation to file_picker via `platforms: windows:` `pluginClass` or `dartPluginClass`.
+#24 8.951 
+#24 9.333 Package file_picker:linux references file_picker:linux as the default plugin, but it does not provide an inline implementation.
+#24 9.333 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: linux: default_package: file_picker` or add an inline implementation to file_picker via `platforms: linux:` `pluginClass` or `dartPluginClass`.
+#24 9.333 
+#24 9.335 Package file_picker:macos references file_picker:macos as the default plugin, but it does not provide an inline implementation.
+#24 9.335 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: macos: default_package: file_picker` or add an inline implementation to file_picker via `platforms: macos:` `pluginClass` or `dartPluginClass`.
+#24 9.335 
+#24 9.336 Package file_picker:windows references file_picker:windows as the default plugin, but it does not provide an inline implementation.
+#24 9.336 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: windows: default_package: file_picker` or add an inline implementation to file_picker via `platforms: windows:` `pluginClass` or `dartPluginClass`.
+#24 9.336 
+#24 9.533 Package file_picker:linux references file_picker:linux as the default plugin, but it does not provide an inline implementation.
+#24 9.533 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: linux: default_package: file_picker` or add an inline implementation to file_picker via `platforms: linux:` `pluginClass` or `dartPluginClass`.
+#24 9.533 
+#24 9.535 Package file_picker:macos references file_picker:macos as the default plugin, but it does not provide an inline implementation.
+#24 9.535 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: macos: default_package: file_picker` or add an inline implementation to file_picker via `platforms: macos:` `pluginClass` or `dartPluginClass`.
+#24 9.535 
+#24 9.536 Package file_picker:windows references file_picker:windows as the default plugin, but it does not provide an inline implementation.
+#24 9.536 Ask the maintainers of file_picker to either avoid referencing a default implementation via `platforms: windows: default_package: file_picker` or add an inline implementation to file_picker via `platforms: windows:` `pluginClass` or `dartPluginClass`.
+#24 9.536 
+#24 9.754 Compiling lib/main.dart for the Web...                          
+#24 ...
+
+#22 [tosns-api 6/8] RUN pip install --no-cache-dir -r requirements.txt
+#22 53.22 Successfully installed aiofiles-25.1.0 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.13.0 apscheduler-3.11.2 asyncpg-0.31.0 bcrypt-5.0.0 certifi-2026.2.25 cffi-2.0.0 charset_normalizer-3.4.7 click-8.3.2 cryptography-46.0.7 ecdsa-0.19.2 fastapi-0.136.0 google-ai-generativelanguage-0.6.15 google-api-core-2.30.3 google-api-python-client-2.194.0 google-auth-2.49.2 google-auth-httplib2-0.3.1 google-cloud-texttospeech-2.36.0 google-generativeai-0.8.6 googleapis-common-protos-1.74.0 greenlet-3.4.0 grpcio-1.80.0 grpcio-status-1.71.2 h11-0.16.0 httpcore-1.0.9 httplib2-0.31.2 httptools-0.7.1 httpx-0.28.1 idna-3.11 passlib-1.7.4 proto-plus-1.27.2 protobuf-5.29.6 pyasn1-0.6.3 pyasn1-modules-0.4.2 pycparser-3.0 pydantic-2.13.1 pydantic-core-2.46.1 pydantic-settings-2.13.1 pyparsing-3.3.2 python-dotenv-1.2.2 python-jose-3.5.0 python-multipart-0.0.26 python-telegram-bot-22.7 pyyaml-6.0.3 requests-2.33.1 rsa-4.9.1 six-1.17.0 sqlalchemy-2.0.49 starlette-1.0.0 tqdm-4.67.3 typing-extensions-4.15.0 typing-inspection-0.4.2 tzlocal-5.3.1 uritemplate-4.2.0 urllib3-2.6.3 uvicorn-0.44.0 uvloop-0.22.1 watchfiles-1.1.1 websockets-16.0
+#22 53.22 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#22 53.40 
+#22 53.40 [notice] A new release of pip is available: 24.0 -> 26.0.1
+#22 53.40 [notice] To update, run: pip install --upgrade pip
+#22 DONE 56.5s
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 9.754 Compiling lib/main.dart for the Web...                          
+#24 ...
+
+#25 [tosns-api 7/8] COPY ./app ./app
+#25 DONE 0.3s
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 9.754 Compiling lib/main.dart for the Web...                          
+#24 ...
+
+#26 [tosns-api 8/8] RUN chown -R appuser:appuser /app
+#26 DONE 0.7s
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 9.754 Compiling lib/main.dart for the Web...                          
+#24 ...
+
+#27 [tosns-api] exporting to image
+#27 exporting layers
+#27 exporting layers 23.3s done
+#27 exporting manifest sha256:5b32076a51d90b414c766a3e982232f38580db480419bb3f516a3dc653def203 0.0s done
+#27 exporting config sha256:0cac74a31c664d970db4b6be8d806197ec5ecef9e38b53905ae0a688e9ae4095 0.0s done
+#27 exporting attestation manifest sha256:6ba5159a63a7579867fb8acae532b46c102fe59bb285686b49a52f36c09897f0 0.0s done
+#27 exporting manifest list sha256:4579cfa547c15e9de21aced9823f426486a05ecac22c801c0030e6949cbd163b 0.0s done
+#27 naming to docker.io/library/tosns-tosns-api:latest
+#27 naming to docker.io/library/tosns-tosns-api:latest done
+#27 unpacking to docker.io/library/tosns-tosns-api:latest
+#27 unpacking to docker.io/library/tosns-tosns-api:latest 7.0s done
+#27 DONE 30.4s
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 9.754 Compiling lib/main.dart for the Web...                          
+#24 ...
+
+#28 [tosns-api] resolving provenance for metadata file
+#28 DONE 0.0s
+
+#24 [tosns-admin build 7/7] RUN flutter build web --release
+#24 9.754 Compiling lib/main.dart for the Web...                          
+#24 157.4 Wasm dry run findings:
+#24 157.4 Found incompatibilities with WebAssembly.
+#24 157.4 
+#24 157.4 package:file_picker/_internal/file_picker_web.dart 2:1 - dart:html unsupported (0)
+#24 157.4 
+#24 157.4 Consider addressing these issues to enable wasm builds. See docs for more info: https://docs.flutter.dev/platform-integration/web/wasm
+#24 157.4 
+#24 157.4 Use --no-wasm-dry-run to disable these warnings.
+#24 161.9 Font asset "Font-Awesome-7-Brands-Regular-400.otf" was tree-shaken, reducing it from 199352 to 6696 bytes (96.6% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+#24 161.9 Font asset "CupertinoIcons.ttf" was tree-shaken, reducing it from 257628 to 1472 bytes (99.4% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+#24 161.9 Font asset "MaterialIcons-Regular.otf" was tree-shaken, reducing it from 1645184 to 13252 bytes (99.2% reduction). Tree-shaking can be disabled by providing the --no-tree-shake-icons flag when building your app.
+#24 162.6 Compiling lib/main.dart for the Web...                            152.8s
+#24 162.6 ✓ Built build/web
+#24 DONE 162.7s
+
+#29 [tosns-admin stage-1 2/2] COPY --from=build /app/build/web /usr/share/nginx/html
+#29 DONE 0.2s
+
+#30 [tosns-admin] exporting to image
+#30 exporting layers
+#30 exporting layers 2.5s done
+#30 exporting manifest sha256:9d9857bd8f9336de9d95c1ead948d073ef7fb45620348914454b0d69a26144dc 0.0s done
+#30 exporting config sha256:a4bba77120d922599d3f912a79d1364272a6da15dc19720f07630a2457459266 0.0s done
+#30 exporting attestation manifest sha256:425e5eb8f8dd8cff92a291b5f22d8fbcbdce2cf96c2e18b7379ed1d687864041 0.0s done
+#30 exporting manifest list sha256:433b4f108f0f87e82b88419c6041ed9c5204b65c9ca3f07b463abf55fdfddd71 0.0s done
+#30 naming to docker.io/library/tosns-tosns-admin:latest done
+#30 unpacking to docker.io/library/tosns-tosns-admin:latest
+#30 unpacking to docker.io/library/tosns-tosns-admin:latest 0.5s done
+#30 DONE 3.2s
+
+#31 [tosns-admin] resolving provenance for metadata file
+#31 DONE 0.0s
+ Image tosns-tosns-admin Built 
+ Image tosns-tosns-api Built 
+ -> Docker 이미지 빌드 성공.
+[3/3] 빌드 프로세스 종료: Thu Apr 16 20:50:15 UTC 2026
+최종 빌드 로그: /home/greenbee-tosns/workspace/tosns/build_log_20260416_204701.txt
+==========================================

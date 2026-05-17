@@ -1,0 +1,8 @@
+data/
+.env
+.env.local
+.env.prod
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,15 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+sqlalchemy
+asyncpg
+apscheduler
+python-multipart
+httpx
+python-jose[cryptography]
+passlib[bcrypt]
+python-telegram-bot
+google-generativeai
+google-cloud-texttospeech
+aiofiles
+cryptography
