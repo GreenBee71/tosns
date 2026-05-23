@@ -22,7 +22,7 @@ services:
 
   tosns-admin:
     build:
-      context: ./frontend_flutter
+      context: ./frontend_react
       dockerfile: Dockerfile
     container_name: tosns-admin
     networks:
