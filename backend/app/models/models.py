@@ -110,19 +110,19 @@ class MediaAsset(Base):
 
     project = relationship("MediaProject", back_populates="assets")
 
-class MediaSchedule(Base):
-    __tablename__ = "media_schedules"
-
-    id = Column(Integer, primary_key=True, index=True)
-    asset_id = Column(Integer, ForeignKey("media_assets.id"), nullable=False)
-    platform = Column(Enum(Platform), nullable=False)
-    scheduled_at = Column(DateTime, nullable=False)
-    status = Column(String, default="pending")  # pending, published, failed
-    caption = Column(String)
-    tags = Column(String)
-    created_at = Column(DateTime, default=datetime.utcnow)
-
-    asset = relationship("MediaAsset")
+# class MediaSchedule(Base):
+#     __tablename__ = "media_schedules"
+# 
+#     id = Column(Integer, primary_key=True, index=True)
+#     asset_id = Column(Integer, ForeignKey("media_assets.id"), nullable=False)
+#     platform = Column(Enum(Platform), nullable=False)
+#     scheduled_at = Column(DateTime, nullable=False)
+#     status = Column(String, default="pending")  # pending, published, failed
+#     caption = Column(String)
+#     tags = Column(String)
+#     created_at = Column(DateTime, default=datetime.utcnow)
+# 
+#     asset = relationship("MediaAsset")
 
 class MediaInsight(Base):
     __tablename__ = "media_insights"
